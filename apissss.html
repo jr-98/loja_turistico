@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js">
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var url="http://ambar.utpl.edu.ec/api/action/datastore_search?resource_id=44b8c90e-4ec7-44e9-b8e8-ff3e2e3720f3";
+			$.ajax({
+				type:"GET",
+				url:url,
+				dataType:"json",
+				success: function(data,textstatus,jqXHR){
+					//var str
+					//$("body").append(data);
+					
+					//for(var i=0; i < data.length; i++){
+						//var noticia=data[0];
+						//alert(noticia.title);
+					//$("body").append("Titulo: "+noticia.title+"<br>");
+					
+					//$("body").append("Texto: "+noticia.body);
+					console.log(data);
+					//}
+
+					var entidad=data.result.records;
+					var str='';
+					str+='<table border="2">';
+					entidad.forEach(function(element){
+						str+="<tr>";
+
+						//str+="<td>";
+						//str+=element.Provincia;
+						//str+="</td>";
+						str+="<td>";
+						str+="<img src=" +podocarpus3.jpg+"align=left>";
+						str+=element.Nombre;
+						str+="</td>";
+						str+="</tr>";
+
+					});
+					str+="</table>";
+					$("body").html(str);
+					
+				}
+			});
+		});
+	</script>
+	<title>
+	</title>
+	</head>
+	<body>
+	</body>
+</html>
